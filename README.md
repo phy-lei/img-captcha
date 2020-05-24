@@ -20,3 +20,5 @@
 
 ![](https://raw.githubusercontent.com/liuzhou1/verify/master/verify/sliderCaptcha/static/img3.png)
 
+  参数：
+  reboot：true-----重启插件

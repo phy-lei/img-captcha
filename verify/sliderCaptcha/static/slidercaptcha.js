@@ -5,6 +5,8 @@
     this.$element = $(element);
     this.options = $.extend({}, SliderCaptcha.DEFAULTS, options);
     this.$element.css({ 'position': 'relative', 'width': this.options.width + 'px', 'margin': '0 auto' });
+    // 疯了o((>ω< ))o为了密码输入失败的优化 终于找到方法 先删掉再init
+    $(element).empty();
     this.init();
   };
 
@@ -49,7 +51,9 @@
       const $this = $(this);
       let data = $this.data('lgb.SliderCaptcha');
       const options = typeof option === 'object' && option;
-
+      if(option.reboot) {
+        $this.data('lgb.SliderCaptcha', data = new SliderCaptcha(this, option));
+      }
       if (data && !/reset/.test(option)) return;
       if (!data) $this.data('lgb.SliderCaptcha', data = new SliderCaptcha(this, options));
       if (typeof option === 'string') data[option]();
